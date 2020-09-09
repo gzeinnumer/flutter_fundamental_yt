@@ -8,24 +8,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Latihan Column dan row"),
+          title: Text("Latihan Container"),
         ),
-        body: Column(
-          //mainkan disini
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Text 1"),
-            Text("Text 2"),
-            Text("Text 3"),
-            Row(
-              children: [
-                Text("Text 4"),
-                Text("Text 5"),
-                Text("Text 6"),
-              ],
-            )
-          ],
+        body: Container(
+          padding: EdgeInsets.fromLTRB(10, 15, 20, 25),
+          color: Colors.red,
+          margin: EdgeInsets.all(10),
+          child: Container(
+            margin: EdgeInsets.only(top: 30),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Colors.white, Colors.amber],
+              ),
+            ),
+          ),
         ),
       ),
     );
