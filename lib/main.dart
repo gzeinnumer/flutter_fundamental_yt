@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -8,39 +9,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int number = 0;
+  String msg="Tekan tombol dong";
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("StateFullWidget"),
+          title: Text("Annonimous Method"),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                number.toString(),
-                style: TextStyle(
-                  fontSize: 10 + number.toDouble(),
-                ),
-              ),
+              Text(msg),
               RaisedButton(
-                child: Text("Button ++"),
-                onPressed: tekanTombol,
+                child: Text("Tekan Saya"),
+                onPressed: () {
+                  setState(() {
+                    msg = "Tombol sudah ditekan";
+                  });
+                },
               )
             ],
           ),
         ),
       ),
     );
-  }
-
-  void tekanTombol() {
-    setState(() {
-      number++;
-    });
   }
 }
