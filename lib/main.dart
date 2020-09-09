@@ -2,31 +2,45 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int number = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Latihan Container"),
+          title: Text("StateFullWidget"),
         ),
-        body: Container(
-          padding: EdgeInsets.fromLTRB(10, 15, 20, 25),
-          color: Colors.red,
-          margin: EdgeInsets.all(10),
-          child: Container(
-            margin: EdgeInsets.only(top: 30),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.white, Colors.amber],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                number.toString(),
+                style: TextStyle(
+                  fontSize: 10 + number.toDouble(),
+                ),
               ),
-            ),
+              RaisedButton(
+                child: Text("Button ++"),
+                onPressed: tekanTombol,
+              )
+            ],
           ),
         ),
       ),
     );
+  }
+
+  void tekanTombol() {
+    setState(() {
+      number++;
+    });
   }
 }
