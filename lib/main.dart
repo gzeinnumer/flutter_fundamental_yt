@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,49 +11,30 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Widget> listData = [];
-  int counter = 0;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("List & ListView"),
+          title: Text("Latihan TextStyle"),
         ),
-        body: ListView(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                RaisedButton(
-                  child: Text("Tambah Data ++"),
-                  onPressed: () {
-                    setState(() {
-                      listData.add(
-                        Text(
-                          "Data ke-" + counter.toString(),
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      );
-                      counter++;
-                    });
-                  },
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Latihan TextStyle",
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontFamily: "Volaroid",
+                  fontSize: 20,
+                  decoration: TextDecoration.overline,
+                  decorationColor: Colors.red,
+                  decorationThickness: 5
                 ),
-                RaisedButton(
-                  child: Text("hapus Data"),
-                  onPressed: (){
-                    listData.removeLast();
-                    counter--;
-                  },
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: listData,
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
