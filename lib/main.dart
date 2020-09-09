@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -11,29 +12,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Random random = Random();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Latihan TextStyle"),
+          title: Text("Latihan Animated Container"),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Latihan TextStyle",
-                style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  fontFamily: "Volaroid",
-                  fontSize: 20,
-                  decoration: TextDecoration.overline,
-                  decorationColor: Colors.red,
-                  decorationThickness: 5
-                ),
-              )
-            ],
+          child: GestureDetector(
+            onTap: () {
+              setState(() {});
+            },
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 500),
+              width: 50.0 + random.nextInt(150),
+              height: 50.0 + random.nextInt(200) / 1 + random.nextInt(3),
+              color: Color.fromARGB(255, random.nextInt(256),
+                  random.nextInt(256), random.nextInt(256)),
+            ),
           ),
         ),
       ),
