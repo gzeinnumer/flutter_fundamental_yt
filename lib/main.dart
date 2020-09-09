@@ -9,30 +9,49 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String msg="Tekan tombol dong";
+  List<Widget> listData = [];
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Annonimous Method"),
+          title: Text("List & ListView"),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(msg),
-              RaisedButton(
-                child: Text("Tekan Saya"),
-                onPressed: () {
-                  setState(() {
-                    msg = "Tombol sudah ditekan";
-                  });
-                },
-              )
-            ],
-          ),
+        body: ListView(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                RaisedButton(
+                  child: Text("Tambah Data ++"),
+                  onPressed: () {
+                    setState(() {
+                      listData.add(
+                        Text(
+                          "Data ke-" + counter.toString(),
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      );
+                      counter++;
+                    });
+                  },
+                ),
+                RaisedButton(
+                  child: Text("hapus Data"),
+                  onPressed: (){
+                    listData.removeLast();
+                    counter--;
+                  },
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: listData,
+            )
+          ],
         ),
       ),
     );
