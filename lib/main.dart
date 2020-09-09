@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '_particial/text/MyText.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,14 +17,14 @@ class MyApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Text 1"),
-            Text("Text 2"),
-            Text("Text 3"),
+            MyText("Text 1"),
+            MyText("Text 2"),
+            MyText("Text 3"),
             Row(
               children: [
-                Text("Text 4"),
-                Text("Text 5"),
-                Text("Text 6"),
+                MyText("Text 4"),
+                MyText("Text 5"),
+                MyText("Text 6"),
               ],
             )
           ],
