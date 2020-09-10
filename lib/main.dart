@@ -1,6 +1,3 @@
-import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,115 +8,84 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Latihan Stack dan AlignWidget"),
-        ),
-        body: Stack(
-          children: <Widget>[
-            Column(
+          appBar: AppBar(
+            title: Text("Latihan Image"),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Flexible(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Container(color: Colors.white),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Container(color: Colors.black12),
-                      ),
-                    ],
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  color: Colors.red,
+                  width: 130,
+                  height: 130,
+                  padding: EdgeInsets.all(5),
+                  child: Image(
+                    image: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
+                    ),
+                    fit: BoxFit.none,
                   ),
                 ),
-                Flexible(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      Flexible(
-                          flex: 1, child: Container(color: Colors.black12)),
-                      Flexible(flex: 1, child: Container(color: Colors.white)),
-                    ],
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  color: Colors.red,
+                  width: 130,
+                  height: 130,
+                  padding: EdgeInsets.all(5),
+                  child: Image(
+                    image: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
+                    ),
+                    fit: BoxFit.contain,
                   ),
-                )
-              ],
-            ),
-            ListView(
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  color: Colors.red,
+                  width: 130,
+                  height: 130,
+                  padding: EdgeInsets.all(5),
+                  child: Image(
+                    image: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
                     ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
+                    fit: BoxFit.fill
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  color: Colors.red,
+                  width: 130,
+                  height: 130,
+                  padding: EdgeInsets.all(5),
+                  child: Image(
+                    image: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
                     ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
+                    fit: BoxFit.contain,
+                    repeat: ImageRepeat.repeat,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  color: Colors.red,
+                  width: 130,
+                  height: 130,
+                  padding: EdgeInsets.all(5),
+                  child: Image(
+                    image: AssetImage(
+                        "images/example.jpg"
                     ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "Ini adalah text yang ada ditengah dari lapisan stack",
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                  ],
+                    fit: BoxFit.contain,
+                    repeat: ImageRepeat.repeat,
+                  ),
                 ),
               ],
             ),
-            Align(
-              alignment: Alignment(0.80, 0.95),
-              child: RaisedButton(
-                child: Text("MyButton"),
-                color: Colors.amber,
-                onPressed: () {},
-              ),
-            ),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }
