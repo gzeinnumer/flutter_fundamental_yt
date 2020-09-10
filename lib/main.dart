@@ -8,7 +8,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController c
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
