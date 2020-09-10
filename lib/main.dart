@@ -7,42 +7,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          leading: Icon(
-            Icons.adb,
-            color: Colors.white,
-          ),
-          title: Text(
-            "AppBar Gradasi Dengan Corak",
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () {},
-            )
-          ],
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [
-                    Color(0xff009677),
-                    Color(0xff6610f2),
-                  ],
-                  begin: FractionalOffset.topLeft,
-                  end: FractionalOffset.bottomRight),
-              image: DecorationImage(
-                image: AssetImage("images/bg.png"),
-                fit: BoxFit.none,
-                repeat: ImageRepeat.repeat,
-              ),
-            ),
+        backgroundColor: Colors.blueAccent,
+        body: Container(
+          margin: EdgeInsets.all(10),
+          child: ListView(
+            children: [
+              buildCard(Icons.adb, "Text1"),
+              buildCard(Icons.account_box, "Text2"),
+              buildCard(Icons.repeat, "Text3"),
+              buildCard(Icons.exit_to_app, "Text4"),
+              buildCard(Icons.add, "Text5"),
+              buildCard(Icons.ac_unit, "Text6"),
+              buildCard(Icons.accessibility_new, "Text7"),
+            ],
           ),
         ),
+      ),
+    );
+  }
+
+  Card buildCard(IconData iconData, String text) {
+    return Card(
+      elevation: 5,
+      child: Row(
+        children: [
+          Container(
+            margin: EdgeInsets.all(5),
+            child: Icon(iconData),
+          ),
+          Text(text)
+        ],
       ),
     );
   }
