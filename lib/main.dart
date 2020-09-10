@@ -3,89 +3,79 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Color color1 = Colors.red;
+  Color color2 = Colors.green;
+  Color targetColor;
+
+  bool isAccepted = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text("Latihan Image"),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+        appBar:
+            AppBar(title: Text("Draggable, DragTarget, SizedBox, Material")),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  color: Colors.red,
-                  width: 130,
-                  height: 130,
-                  padding: EdgeInsets.all(5),
-                  child: Image(
-                    image: NetworkImage(
-                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
-                    ),
-                    fit: BoxFit.none,
-                  ),
+                Draggable<Color>(
+                  data: color1,
+                  child: MySizeBox(color1: color1),
+                  childWhenDragging: MySizeBox(color1: Colors.black26),
+                  feedback: MySizeBox(color1: color1.withOpacity(0.7)),
                 ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  color: Colors.red,
-                  width: 130,
-                  height: 130,
-                  padding: EdgeInsets.all(5),
-                  child: Image(
-                    image: NetworkImage(
-                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-                    ),
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  color: Colors.red,
-                  width: 130,
-                  height: 130,
-                  padding: EdgeInsets.all(5),
-                  child: Image(
-                    image: NetworkImage(
-                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-                    ),
-                    fit: BoxFit.fill
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  color: Colors.red,
-                  width: 130,
-                  height: 130,
-                  padding: EdgeInsets.all(5),
-                  child: Image(
-                    image: NetworkImage(
-                        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
-                    ),
-                    fit: BoxFit.contain,
-                    repeat: ImageRepeat.repeat,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  color: Colors.red,
-                  width: 130,
-                  height: 130,
-                  padding: EdgeInsets.all(5),
-                  child: Image(
-                    image: AssetImage(
-                        "images/example.jpg"
-                    ),
-                    fit: BoxFit.contain,
-                    repeat: ImageRepeat.repeat,
-                  ),
+                Draggable<Color>(
+                  data: color2,
+                  child: MySizeBox(color1: color2),
+                  childWhenDragging: MySizeBox(color1: Colors.black26),
+                  feedback: MySizeBox(color1: color2.withOpacity(0.7)),
                 ),
               ],
             ),
-          )),
+            DragTarget<Color>(
+              onWillAccept: (value) => true,
+              onAccept: (value) {
+                isAccepted = true;
+                targetColor = value;
+              },
+              builder: (context, candidates, rejected){
+                return(isAccepted) ? MySizeBox(color1: targetColor) : MySizeBox(color1: Colors.black);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MySizeBox extends StatelessWidget {
+  const MySizeBox({
+    Key key,
+    @required this.color1,
+  }) : super(key: key);
+
+  final Color color1;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 50,
+      height: 50,
+      child: Material(
+        color: color1,
+        shape: StadiumBorder(),
+        elevation: 3,
+      ),
     );
   }
 }
