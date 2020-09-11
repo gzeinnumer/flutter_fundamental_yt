@@ -8,14 +8,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController cont = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Latihan TextField"),
+          title: Text("Latihan TextField Style"),
         ),
         body: Container(
           margin: EdgeInsets.all(30),
@@ -24,13 +22,74 @@ class _MyAppState extends State<MyApp> {
             children: [
               TextField(
                 maxLength: 20,
-                //obscureText: true,
-                onChanged: (value) {
-                  setState(() {});
-                },
-                controller: cont,
+                decoration: InputDecoration(
+                  fillColor: Colors.black12,
+                  filled: true,
+                  icon: Icon(Icons.adb),
+                  prefix: Container(
+                    width: 5,
+                    height: 5,
+                    color: Colors.red,
+                  ),
+                  //1
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.red,
+                  ),
+                  prefixStyle: TextStyle(
+                    color: Colors.blueAccent,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  labelText: "labelText",
+                  labelStyle: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                  hintText: "hintText",
+                  hintStyle: TextStyle(
+                    fontSize: 12,
+                  ),
+                  suffix: Container(
+                    width: 5,
+                    height: 5,
+                    color: Colors.red,
+                  ),
+                  //1
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
               ),
-              Text(cont.text),
+              TextField(
+                maxLength: 20,
+                decoration: InputDecoration(
+                  fillColor: Colors.black12,
+                  filled: true,
+                  icon: Icon(Icons.adb),
+                  prefixText: "prefixText : ",
+                  //2 //pilih salah satu
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.red,
+                  ),
+                  prefixStyle: TextStyle(
+                    color: Colors.blueAccent,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  labelText: "labelText",
+                  labelStyle: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                  hintText: "hintText",
+                  hintStyle: TextStyle(
+                    fontSize: 12,
+                  ),
+                  suffixText: "suffixText : ",
+                  //2 //pilih salah satu
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
